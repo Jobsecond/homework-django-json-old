@@ -1,0 +1,86 @@
+body {
+    font: normal 11px auto Microsoft YaHei UI, Arial;
+    color: #4f6b72;
+    background: aliceblue;
+}
+
+a {
+    color: #c75f3e;
+}
+
+#mytable {
+    width: 700px;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    border: none;
+    white-space: nowrap;
+    color: #19667d;
+	background-color: #70c9e3;
+}
+
+caption {
+    padding: 0 0 5px 0;
+    width: 700px;
+    font: italic 16px Microsoft YaHei UI, Arial;
+    text-align: right;
+}
+
+th {
+    font: bold 16px Arial;
+    color: #4f6b72;
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-top: 1px solid #C1DAD7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 6px 6px 6px 12px;
+    background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+    white-space: nowrap;
+}
+
+/*th.nobg {
+    border-top: 0;
+    border-left: 0;
+    border-right: 1px solid #C1DAD7;
+    background: none;
+}*/
+
+td {
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    font-size: 16px;
+    padding: 6px 6px 6px 12px;
+    /*color: #4f6b72;*/
+}
+
+td.center {
+    text-align: center;
+    padding: 0;
+}
+tr {
+    background: #fff;
+}
+
+tr.submit {
+    border-left: 1px solid #C1DAD7;
+    border-top: 0;
+    background: #eef7e8;
+    color: #797268;
+}
+
+tr.invalid {
+    background: #fdfdfd;
+    border-left: 1px solid #f7f7f7;
+    border-top: 0;
+    font: 15px Arial;
+    color: #dfdfdf;
+}
+
+/*---------for IE 5.x bug*/
+html > body td {
+    font-size: 16px;
+}

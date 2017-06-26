@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang=zh-cmn-Hans>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1" />-->
+    <title>作业</title>
+    <link rel="stylesheet" type="text/css" href="/ustatic/css/display.css"/>
+    <script type="text/javascript" >
+        <!--
+        function confirmBeforeDelete(i){
+            var msg = "您真的确定要删除吗？\n\n请确认！";
+            if (confirm(msg)==true){
+                var form1=document.getElementById("manage_delete_" + i);
+                form1.action="{% url "manage" %}";
+                form1.submit();
+            }
+        }
+        //-->
+    </script>
+    <noscript>对不起，浏览器不支持 Javascript！</noscript>
+</head>
+<body>
+<h1>作业</h1><br>
+<table border="0">
+    <tr>
+        <th>序号</th>
+        <th>课程</th>
+        <th>日期</th>
+        <th>作业</th>
+        <th>需提交</th>
+        <th>截止日期</th>
+        <th>有效</th>
+        <th>操作</th>
+    </tr>
+    {% for y in ls_POST %}
+    <tr{% if y.6 %}{% if y.4 %} class="submit"{% endif %}{% else %} class="invalid"{% endif %}>
+        <td class="center">{{ y.0 }}</td><!--序号-->
+        <td>{{ y.1 }}</td><!--课程-->
+        <td>{{ y.2 }}</td><!--日期-->
+        <td>{{ y.3 | linebreaksbr }}</td><!--作业（支持换行）-->
+        <td class="center">{% if y.4 %}●{% else %}－{% endif %}</td><!--需提交-->
+        <td>{{ y.5 }}</td><!--截止日期-->
+        <td class="center">{% if y.6 %}●{% else %}－{% endif %}</td><!--有效-->
+        <td>
+            <table>
+            <tr><td style="border: 0; padding: 0 0 0.15em 0; word-break: normal;">
+                <form id="manage_modify_{{ y.0 }}" action="{% url "manage" %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="modify" value="{{ y.0 }}">
+                    <button type="submit" value="m{{ y.0 }}" class="op">修改</button>
+                </form>
+            </td></tr>
+            <tr><td style="border: 0; padding: 0.15em 0 0 0; word-break: normal;">
+                <form id="manage_delete_{{ y.0 }}" action="{% url "manage" %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="delete" value="{{ y.0 }}">
+                    <button type="button" value="d{{ y.0 }}" onclick="confirmBeforeDelete({{ y.0 }});" class="op">删除</button>
+                </form>
+            </td></tr>
+            </table>
+        </td><!--操作-->
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="8" style="margin: 0; padding: 0;"><button class="add" onclick="window.location.href='/add'">+</button><!--<a href="/add">添加作业</a>--></td>
+    </tr>
+</table>
+</body>
+</html>
